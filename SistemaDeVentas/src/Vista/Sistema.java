@@ -302,6 +302,9 @@ public class Sistema extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         TableUsuarios = new javax.swing.JTable();
         jLabel34 = new javax.swing.JLabel();
+        btnGuardarUsu = new javax.swing.JButton();
+        btnEliminarUsu = new javax.swing.JButton();
+        btnNuevoUsu = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
@@ -309,22 +312,29 @@ public class Sistema extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         cbxRol = new javax.swing.JComboBox<>();
-        btnIniciar = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
+        txtIdusuario = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         TableVentaDetallada = new javax.swing.JTable();
         jLabel58 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         d_direccion = new javax.swing.JLabel();
         d_total = new javax.swing.JLabel();
         d_cliente = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
         d_telefono = new javax.swing.JLabel();
         d_dni = new javax.swing.JLabel();
         d_venta = new javax.swing.JLabel();
         d_fechaventa = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -853,6 +863,7 @@ public class Sistema extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TableProducto.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         TableProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -870,6 +881,12 @@ public class Sistema extends javax.swing.JFrame {
         if (TableProducto.getColumnModel().getColumnCount() > 0) {
             TableProducto.getColumnModel().getColumn(0).setMinWidth(60);
             TableProducto.getColumnModel().getColumn(0).setMaxWidth(60);
+            TableProducto.getColumnModel().getColumn(1).setMinWidth(90);
+            TableProducto.getColumnModel().getColumn(1).setMaxWidth(90);
+            TableProducto.getColumnModel().getColumn(4).setMinWidth(70);
+            TableProducto.getColumnModel().getColumn(4).setMaxWidth(70);
+            TableProducto.getColumnModel().getColumn(5).setMinWidth(70);
+            TableProducto.getColumnModel().getColumn(5).setMaxWidth(70);
         }
 
         jPanel5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 600, 360));
@@ -1087,19 +1104,29 @@ public class Sistema extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TableUsuarios.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         TableUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Nombre", "Usuario", "Rol"
+                "ID", "NOMBRE", "USUARIO", "ROL"
             }
         ));
         TableUsuarios.setRowHeight(20);
+        TableUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableUsuariosMouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(TableUsuarios);
         if (TableUsuarios.getColumnModel().getColumnCount() > 0) {
-            TableUsuarios.getColumnModel().getColumn(0).setMinWidth(150);
-            TableUsuarios.getColumnModel().getColumn(0).setMaxWidth(150);
+            TableUsuarios.getColumnModel().getColumn(0).setMinWidth(80);
+            TableUsuarios.getColumnModel().getColumn(0).setMaxWidth(80);
+            TableUsuarios.getColumnModel().getColumn(2).setMinWidth(150);
+            TableUsuarios.getColumnModel().getColumn(2).setMaxWidth(150);
+            TableUsuarios.getColumnModel().getColumn(3).setMinWidth(130);
+            TableUsuarios.getColumnModel().getColumn(3).setMaxWidth(130);
         }
 
         jPanel8.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 600, 360));
@@ -1108,6 +1135,30 @@ public class Sistema extends javax.swing.JFrame {
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Usuario:");
         jPanel8.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 105, -1, -1));
+
+        btnGuardarUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/GuardarTodo.png"))); // NOI18N
+        btnGuardarUsu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarUsuActionPerformed(evt);
+            }
+        });
+        jPanel8.add(btnGuardarUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 60, 40));
+
+        btnEliminarUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/eliminar.png"))); // NOI18N
+        btnEliminarUsu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarUsuActionPerformed(evt);
+            }
+        });
+        jPanel8.add(btnEliminarUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 380, 60, 40));
+
+        btnNuevoUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/nuevo.png"))); // NOI18N
+        btnNuevoUsu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoUsuActionPerformed(evt);
+            }
+        });
+        jPanel8.add(btnNuevoUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 60, 40));
 
         txtUsuario.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         txtUsuario.setBorder(null);
@@ -1141,16 +1192,6 @@ public class Sistema extends javax.swing.JFrame {
         cbxRol.setBorder(null);
         jPanel8.add(cbxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 345, 230, 25));
 
-        btnIniciar.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
-        btnIniciar.setText("Registrar");
-        btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIniciarActionPerformed(evt);
-            }
-        });
-        jPanel8.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 390, 110, 30));
-
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Cuadrito.png"))); // NOI18N
         jPanel8.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 270, 360));
 
@@ -1159,6 +1200,7 @@ public class Sistema extends javax.swing.JFrame {
         jLabel53.setText("TABLA USUARIOS");
         jLabel53.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel8.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 20, 910, 40));
+        jPanel8.add(txtIdusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
 
         jTabbedPane1.addTab("7", jPanel8);
 
@@ -1179,61 +1221,75 @@ public class Sistema extends javax.swing.JFrame {
         if (TableVentaDetallada.getColumnModel().getColumnCount() > 0) {
             TableVentaDetallada.getColumnModel().getColumn(0).setMinWidth(150);
             TableVentaDetallada.getColumnModel().getColumn(0).setMaxWidth(150);
+            TableVentaDetallada.getColumnModel().getColumn(2).setMinWidth(150);
+            TableVentaDetallada.getColumnModel().getColumn(2).setMaxWidth(150);
+            TableVentaDetallada.getColumnModel().getColumn(3).setMinWidth(150);
+            TableVentaDetallada.getColumnModel().getColumn(3).setMaxWidth(150);
         }
 
-        jPanel9.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 880, 240));
+        jPanel9.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 880, 210));
 
         jLabel58.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 48)); // NOI18N
         jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel58.setText("VENTA DETALLADA");
         jLabel58.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel9.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 20, 910, 40));
+        jPanel9.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 610, 50));
+
+        jLabel18.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel18.setText("  DNI                      Nombre                                                                    Telefono               Dirección                                       ");
+        jPanel9.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         d_direccion.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        d_direccion.setText("Jr.Vilcabamba");
-        jPanel9.add(d_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 260, 20));
+        jPanel9.add(d_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 140, 260, 30));
 
         d_total.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        d_total.setText("118.50");
-        jPanel9.add(d_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 120, 20));
+        jPanel9.add(d_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, 150, 30));
 
         d_cliente.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        d_cliente.setText("Manuel Chunca Mamani");
-        jPanel9.add(d_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 330, 20));
-
-        jTextField2.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField2.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 51, 204));
-        jTextField2.setText("  Venta               Fecha                     Total");
-        jPanel9.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 145, 420, 30));
-
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 51, 204));
-        jTextField1.setText("  DNI                     Nombre                                                                    Telefono               Dirección                                       ");
-        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel9.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 75, 880, 30));
+        jPanel9.add(d_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 330, 30));
 
         d_telefono.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        d_telefono.setText("772980416");
-        jPanel9.add(d_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 90, 20));
+        jPanel9.add(d_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 100, 30));
 
         d_dni.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        d_dni.setText("77298041");
-        jPanel9.add(d_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 90, 20));
+        jPanel9.add(d_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 90, 30));
 
         d_venta.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        d_venta.setText("2");
-        jPanel9.add(d_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 90, 20));
+        jPanel9.add(d_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, 110, 30));
 
         d_fechaventa.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        d_fechaventa.setText("23/11/2021");
-        jPanel9.add(d_fechaventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 120, 20));
+        jPanel9.add(d_fechaventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 110, 30));
+
+        jLabel19.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel19.setText("Total");
+        jPanel9.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel20.setText("Fecha");
+        jPanel9.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel22.setText("Venta ");
+        jPanel9.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Bordeplomo.jpeg"))); // NOI18N
+        jPanel9.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 880, 30));
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Bordeplomo.jpeg"))); // NOI18N
+        jPanel9.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 185, 880, 20));
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Bordeplomo.jpeg"))); // NOI18N
+        jPanel9.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 395, 880, 10));
+
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Bordeplomo.jpeg"))); // NOI18N
+        jPanel9.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 80, 30));
+
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Bordeplomo.jpeg"))); // NOI18N
+        jPanel9.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 80, 30));
 
         jTabbedPane1.addTab("8", jPanel9);
 
@@ -1445,6 +1501,7 @@ public class Sistema extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecciona una fila");
         } else {
             LimpiarTableDetalle();
+            LimpiarDetalle();
             v = Vdao.BuscarVenta(Integer.parseInt(txtIdVenta.getText()));
             ventaDt(v.getId(), v.getCliente(), v.getTotal(), txtFechaVenta.getText());
             LimpiarTableVentas();
@@ -1472,8 +1529,8 @@ public class Sistema extends javax.swing.JFrame {
         LimpiarTable();
         ListarProveedor();
         jTabbedPane1.setSelectedIndex(2);
-        btnEditarProveedor.setEnabled(true);
-        btnEliminarProveedor.setEnabled(true);
+        btnEditarProveedor.setEnabled(false);
+        btnEliminarProveedor.setEnabled(false);
         LimpiarProveedor();
     }//GEN-LAST:event_btnProveedorActionPerformed
 
@@ -1505,6 +1562,7 @@ public class Sistema extends javax.swing.JFrame {
     private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
         // TODO add your handling code here:
         jTabbedPane1.setSelectedIndex(5);
+        ListarConfig();
     }//GEN-LAST:event_btnConfigActionPerformed
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
@@ -1750,8 +1808,19 @@ public class Sistema extends javax.swing.JFrame {
         btnGuardarpro.setEnabled(true);
     }//GEN-LAST:event_btnNuevoProActionPerformed
 
-    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        // TODO add your handling code here:
+    boolean cambiar = false;
+
+    private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
+        if (!cambiar) {
+            jLabel1.setIcon(new ImageIcon(getClass().getResource("/Img/Sistema_dark.png")));
+            cambiar = true;
+        } else if (cambiar) {
+            jLabel1.setIcon(new ImageIcon(getClass().getResource("/Img/Sistema_color.png")));
+            cambiar = false;
+        }
+    }//GEN-LAST:event_btnCambiarActionPerformed
+
+    private void btnGuardarUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarUsuActionPerformed
         if (txtNombre.getText().equals("") || txtUsuario.getText().equals("") || txtPass.getPassword().equals("")) {
             JOptionPane.showMessageDialog(null, "Todo los campos son requeridos");
         } else {
@@ -1769,23 +1838,45 @@ public class Sistema extends javax.swing.JFrame {
             ListarUsuarios();
             nuevoUsuario();
         }
-    }//GEN-LAST:event_btnIniciarActionPerformed
+    }//GEN-LAST:event_btnGuardarUsuActionPerformed
 
-    boolean cambiar = false;
-
-    private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
-        if (!cambiar) {
-            jLabel1.setIcon(new ImageIcon(getClass().getResource("/Img/Sistema_dark.png")));
-            cambiar = true;
-        } else if (cambiar) {
-            jLabel1.setIcon(new ImageIcon(getClass().getResource("/Img/Sistema_color.png")));
-            cambiar = false;
+    private void btnEliminarUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarUsuActionPerformed
+        if (!"".equals(txtIdproducto.getText())) {
+            int pregunta = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar");
+            if (pregunta == 0) {
+                int id = Integer.parseInt(txtIdproducto.getText());
+                proDao.EliminarProductos(id);
+                LimpiarTable();
+                LimpiarProductos();
+                ListarProductos();
+                btnEditarpro.setEnabled(false);
+                btnEliminarPro.setEnabled(false);
+                btnGuardarpro.setEnabled(true);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecciona una fila");
         }
-    }//GEN-LAST:event_btnCambiarActionPerformed
+    }//GEN-LAST:event_btnEliminarUsuActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void btnNuevoUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoUsuActionPerformed
+        LimpiarUsuarios();
+        btnEliminarUsu.setEnabled(false);
+        btnGuardarUsu.setEnabled(true);
+    }//GEN-LAST:event_btnNuevoUsuActionPerformed
+
+    private void TableUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableUsuariosMouseClicked
+        btnEliminarUsu.setEnabled(true);
+        btnGuardarUsu.setEnabled(true);
+        int fila = TableUsuarios.rowAtPoint(evt.getPoint());
+        txtIdusuario.setText(TableUsuarios.getValueAt(fila, 0).toString());
+        txtUsuario.setText(TableUsuarios.getValueAt(fila, 1).toString());
+        pro = proDao.BuscarId(Integer.parseInt(txtIdproducto.getText()));
+        txtCodigoPro.setText(pro.getCodigo());
+        txtDesPro.setText(pro.getNombre());
+        txtCantPro.setText("" + pro.getStock());
+        txtPrecioPro.setText("" + pro.getPrecio());
+        cbxProveedorPro.setSelectedItem(new ComboTo(pro.getProveedor(), pro.getProveedorPro()));
+    }//GEN-LAST:event_TableUsuariosMouseClicked
 
     public static void main(String args[]) {
 
@@ -1817,15 +1908,17 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarCliente;
     private javax.swing.JButton btnEliminarPro;
     private javax.swing.JButton btnEliminarProveedor;
+    private javax.swing.JButton btnEliminarUsu;
     private javax.swing.JButton btnEliminarventa;
     private javax.swing.JButton btnGenerarVenta;
     private javax.swing.JButton btnGuardarCliente;
+    private javax.swing.JButton btnGuardarUsu;
     private javax.swing.JButton btnGuardarpro;
-    private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnNuevaVenta;
     private javax.swing.JButton btnNuevoCliente;
     private javax.swing.JButton btnNuevoPro;
     private javax.swing.JButton btnNuevoProveedor;
+    private javax.swing.JButton btnNuevoUsu;
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnUsuarios;
@@ -1850,14 +1943,23 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
@@ -1902,8 +2004,6 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField txtCantPro;
     private javax.swing.JTextField txtCantidadVenta;
     private javax.swing.JTextField txtCodigoPro;
@@ -1922,6 +2022,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JTextField txtIdProveedor;
     private javax.swing.JTextField txtIdVenta;
     private javax.swing.JTextField txtIdproducto;
+    private javax.swing.JLabel txtIdusuario;
     private javax.swing.JTextField txtMensaje;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreCliente;
@@ -1964,6 +2065,23 @@ public class Sistema extends javax.swing.JFrame {
         txtDesPro.setText("");
         txtCantPro.setText("");
         txtPrecioPro.setText("");
+    }
+
+    private void LimpiarUsuarios() {
+        txtUsuario.setText("");
+        txtPass.setText("");
+        cbxRol.setSelectedItem(null);
+        txtNombre.setText("");
+    }
+
+    private void LimpiarDetalle() {
+        d_dni.setText("");
+        d_cliente.setText("");
+        d_telefono.setText("");
+        d_direccion.setText("");
+        d_venta.setText("");
+        d_fechaventa.setText("");
+        d_total.setText("");
     }
 
     private void TotalPagar() {
@@ -2037,7 +2155,7 @@ public class Sistema extends javax.swing.JFrame {
             tmp.removeRow(0);
         }
     }
-    
+
     public void LimpiarTableDetalle() {
         tmp = (DefaultTableModel) TableVentaDetallada.getModel();
         int fila = TableVentaDetallada.getRowCount();
@@ -2085,7 +2203,7 @@ public class Sistema extends javax.swing.JFrame {
         }
         d_venta.setText(String.valueOf(idventa));
         d_fechaventa.setText(fecha);
-        d_total.setText(String.valueOf(total));
+        d_total.setText("S/." + String.valueOf(total));
         String product = "SELECT d.id, d.id_pro,d.id_venta, d.precio, d.cantidad, p.id, p.nombre FROM detalle d INNER JOIN productos p ON d.id_pro = p.id WHERE d.id_venta = ?";
         try {
             ps = con.prepareStatement(product);
@@ -2106,5 +2224,4 @@ public class Sistema extends javax.swing.JFrame {
             System.out.println(e.toString());
         }
     }
-
 }
