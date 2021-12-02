@@ -1,2 +1,11 @@
+<<<<<<< HEAD
 /SistemaDeVentas/nbproject/private/
 /SistemaDeVentas/build/
+=======
+*.class
+#*.jar
+**.vscode
+**/target/*
+#**/*
+!**/*.java
+>>>>>>> a7b04d691f9532f933dbf5adb1db5ba944e9fb71
