@@ -363,7 +363,7 @@ public class Sistema extends javax.swing.JFrame {
 
         btnNuevaVenta.setBackground(new java.awt.Color(255, 255, 255));
         btnNuevaVenta.setFont(new java.awt.Font("Impact", 0, 20)); // NOI18N
-        btnNuevaVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Nventa.png"))); // NOI18N
+        btnNuevaVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Nventa.png"))); // NOI18N
         btnNuevaVenta.setText("Nueva Venta");
         btnNuevaVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnNuevaVenta.setFocusable(false);
@@ -377,7 +377,7 @@ public class Sistema extends javax.swing.JFrame {
 
         btnClientes.setBackground(new java.awt.Color(255, 255, 255));
         btnClientes.setFont(new java.awt.Font("Impact", 0, 20)); // NOI18N
-        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Clientes.png"))); // NOI18N
+        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Clientes.png"))); // NOI18N
         btnClientes.setText("Clientes");
         btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnClientes.setFocusable(false);
@@ -391,7 +391,7 @@ public class Sistema extends javax.swing.JFrame {
         btnProveedor.setBackground(new java.awt.Color(255, 255, 255));
         btnProveedor.setFont(new java.awt.Font("Impact", 0, 20)); // NOI18N
         btnProveedor.setForeground(new java.awt.Color(51, 51, 51));
-        btnProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/proveedor.png"))); // NOI18N
+        btnProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedor.png"))); // NOI18N
         btnProveedor.setText("Proveedor");
         btnProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnProveedor.setFocusable(false);
@@ -404,7 +404,7 @@ public class Sistema extends javax.swing.JFrame {
 
         btnProductos.setBackground(new java.awt.Color(255, 255, 255));
         btnProductos.setFont(new java.awt.Font("Impact", 0, 20)); // NOI18N
-        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/producto.png"))); // NOI18N
+        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/producto.png"))); // NOI18N
         btnProductos.setText("Productos");
         btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnProductos.setFocusable(false);
@@ -422,7 +422,7 @@ public class Sistema extends javax.swing.JFrame {
 
         btnVentas.setBackground(new java.awt.Color(255, 255, 255));
         btnVentas.setFont(new java.awt.Font("Impact", 0, 20)); // NOI18N
-        btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/compras.png"))); // NOI18N
+        btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/compras.png"))); // NOI18N
         btnVentas.setText("Ventas");
         btnVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVentas.setFocusable(false);
@@ -435,7 +435,7 @@ public class Sistema extends javax.swing.JFrame {
 
         btnConfig.setBackground(new java.awt.Color(255, 255, 255));
         btnConfig.setFont(new java.awt.Font("Impact", 0, 20)); // NOI18N
-        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/config.png"))); // NOI18N
+        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/config.png"))); // NOI18N
         btnConfig.setText("Config");
         btnConfig.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnConfig.setFocusable(false);
@@ -448,7 +448,7 @@ public class Sistema extends javax.swing.JFrame {
 
         btnUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         btnUsuarios.setFont(new java.awt.Font("Impact", 0, 20)); // NOI18N
-        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/proveedor.png"))); // NOI18N
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedor.png"))); // NOI18N
         btnUsuarios.setText("Usuarios");
         btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnUsuarios.setFocusable(false);
@@ -461,7 +461,7 @@ public class Sistema extends javax.swing.JFrame {
 
         btnCerrar.setBackground(new java.awt.Color(255, 255, 255));
         btnCerrar.setFont(new java.awt.Font("Impact", 0, 20)); // NOI18N
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/salir_1.png"))); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir_1.png"))); // NOI18N
         btnCerrar.setText("Cerrar Sesión");
         btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrar.setFocusable(false);
@@ -580,10 +580,10 @@ public class Sistema extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 131, 843, 200));
 
-        btnEliminarventa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/boton_eliminar.png"))); // NOI18N
+        btnEliminarventa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_eliminar.png"))); // NOI18N
         btnEliminarventa.setFocusable(false);
-        btnEliminarventa.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/boton_eliminar.png"))); // NOI18N
-        btnEliminarventa.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/eliminar_press.png"))); // NOI18N
+        btnEliminarventa.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_eliminar.png"))); // NOI18N
+        btnEliminarventa.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar_press.png"))); // NOI18N
         btnEliminarventa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarventaActionPerformed(evt);
@@ -616,7 +616,7 @@ public class Sistema extends javax.swing.JFrame {
         txtNombreClienteventa.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         jPanel2.add(txtNombreClienteventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 240, 33));
 
-        btnGenerarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/buy.png"))); // NOI18N
+        btnGenerarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buy.png"))); // NOI18N
         btnGenerarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarVentaActionPerformed(evt);
@@ -625,7 +625,7 @@ public class Sistema extends javax.swing.JFrame {
         jPanel2.add(btnGenerarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 70, 45));
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/money.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/money.png"))); // NOI18N
         jLabel10.setText("Total a Pagar:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, -1));
 
@@ -680,7 +680,7 @@ public class Sistema extends javax.swing.JFrame {
         jLabel15.setText("Dirección:");
         jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 245, -1, -1));
 
-        btnGuardarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/GuardarTodo.png"))); // NOI18N
+        btnGuardarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GuardarTodo.png"))); // NOI18N
         btnGuardarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGuardarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -689,7 +689,7 @@ public class Sistema extends javax.swing.JFrame {
         });
         jPanel3.add(btnGuardarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 60, 40));
 
-        btnEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Actualizar (2).png"))); // NOI18N
+        btnEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar (2).png"))); // NOI18N
         btnEditarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEditarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -698,7 +698,7 @@ public class Sistema extends javax.swing.JFrame {
         });
         jPanel3.add(btnEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 363, 60, 40));
 
-        btnNuevoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/nuevo.png"))); // NOI18N
+        btnNuevoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevo.png"))); // NOI18N
         btnNuevoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -707,7 +707,7 @@ public class Sistema extends javax.swing.JFrame {
         });
         jPanel3.add(btnNuevoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 363, 60, 40));
 
-        btnEliminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/eliminar.png"))); // NOI18N
+        btnEliminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
         btnEliminarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -716,7 +716,7 @@ public class Sistema extends javax.swing.JFrame {
         });
         jPanel3.add(btnEliminarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 60, 40));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Cuadrito.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cuadrito.png"))); // NOI18N
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 270, 360));
 
         TableCliente.setModel(new javax.swing.table.DefaultTableModel(
@@ -807,7 +807,7 @@ public class Sistema extends javax.swing.JFrame {
         txtDireccionProveedor.setBorder(null);
         jPanel4.add(txtDireccionProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 245, 158, 25));
 
-        btnguardarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/GuardarTodo.png"))); // NOI18N
+        btnguardarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GuardarTodo.png"))); // NOI18N
         btnguardarProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnguardarProveedorActionPerformed(evt);
@@ -815,7 +815,7 @@ public class Sistema extends javax.swing.JFrame {
         });
         jPanel4.add(btnguardarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 60, 40));
 
-        btnEditarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Actualizar (2).png"))); // NOI18N
+        btnEditarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar (2).png"))); // NOI18N
         btnEditarProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarProveedorActionPerformed(evt);
@@ -823,7 +823,7 @@ public class Sistema extends javax.swing.JFrame {
         });
         jPanel4.add(btnEditarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 363, 60, 40));
 
-        btnNuevoProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/nuevo.png"))); // NOI18N
+        btnNuevoProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevo.png"))); // NOI18N
         btnNuevoProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoProveedorActionPerformed(evt);
@@ -831,7 +831,7 @@ public class Sistema extends javax.swing.JFrame {
         });
         jPanel4.add(btnNuevoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 363, 60, 40));
 
-        btnEliminarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/eliminar.png"))); // NOI18N
+        btnEliminarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
         btnEliminarProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarProveedorActionPerformed(evt);
@@ -840,7 +840,7 @@ public class Sistema extends javax.swing.JFrame {
         jPanel4.add(btnEliminarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 60, 40));
         jPanel4.add(txtIdProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, -1, 0));
 
-        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Cuadrito.png"))); // NOI18N
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cuadrito.png"))); // NOI18N
         jPanel4.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 270, 360));
 
         jLabel43.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 48)); // NOI18N
@@ -927,7 +927,7 @@ public class Sistema extends javax.swing.JFrame {
         cbxProveedorPro.setBorder(null);
         jPanel5.add(cbxProveedorPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 285, 145, 25));
 
-        btnGuardarpro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/GuardarTodo.png"))); // NOI18N
+        btnGuardarpro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GuardarTodo.png"))); // NOI18N
         btnGuardarpro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarproActionPerformed(evt);
@@ -935,7 +935,7 @@ public class Sistema extends javax.swing.JFrame {
         });
         jPanel5.add(btnGuardarpro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 60, 40));
 
-        btnEditarpro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Actualizar (2).png"))); // NOI18N
+        btnEditarpro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar (2).png"))); // NOI18N
         btnEditarpro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarproActionPerformed(evt);
@@ -943,7 +943,7 @@ public class Sistema extends javax.swing.JFrame {
         });
         jPanel5.add(btnEditarpro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 60, 40));
 
-        btnEliminarPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/eliminar.png"))); // NOI18N
+        btnEliminarPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
         btnEliminarPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarProActionPerformed(evt);
@@ -951,7 +951,7 @@ public class Sistema extends javax.swing.JFrame {
         });
         jPanel5.add(btnEliminarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 60, 40));
 
-        btnNuevoPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/nuevo.png"))); // NOI18N
+        btnNuevoPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevo.png"))); // NOI18N
         btnNuevoPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoProActionPerformed(evt);
@@ -960,7 +960,7 @@ public class Sistema extends javax.swing.JFrame {
         jPanel5.add(btnNuevoPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 60, 40));
         jPanel5.add(txtIdproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, 0));
 
-        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Cuadrito.png"))); // NOI18N
+        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cuadrito.png"))); // NOI18N
         jPanel5.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 270, 360));
 
         jLabel50.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 48)); // NOI18N
@@ -1000,7 +1000,7 @@ public class Sistema extends javax.swing.JFrame {
 
         jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 880, 310));
 
-        btnVentaDetallada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/detalle.png"))); // NOI18N
+        btnVentaDetallada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/detalle.png"))); // NOI18N
         btnVentaDetallada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentaDetalladaActionPerformed(evt);
@@ -1021,7 +1021,7 @@ public class Sistema extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnActualizarConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Actualizar (2).png"))); // NOI18N
+        btnActualizarConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar (2).png"))); // NOI18N
         btnActualizarConfig.setText("ACTUALIZAR");
         btnActualizarConfig.setBorder(null);
         btnActualizarConfig.addActionListener(new java.awt.event.ActionListener() {
@@ -1082,7 +1082,7 @@ public class Sistema extends javax.swing.JFrame {
         jPanel7.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, -1, -1));
         jPanel7.add(txtIdConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 0, 0));
 
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/empresa.png"))); // NOI18N
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/empresa.png"))); // NOI18N
         jPanel7.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 430, 280));
 
         jLabel52.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 58)); // NOI18N
@@ -1091,7 +1091,7 @@ public class Sistema extends javax.swing.JFrame {
         jLabel52.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel7.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 900, 50));
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/2Cuadro.png"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2Cuadro.png"))); // NOI18N
         jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 440, 310));
 
         jTabbedPane1.addTab("6", jPanel7);
@@ -1131,7 +1131,7 @@ public class Sistema extends javax.swing.JFrame {
         jLabel34.setText("Usuario:");
         jPanel8.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 105, -1, -1));
 
-        btnGuardarUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/GuardarTodo.png"))); // NOI18N
+        btnGuardarUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GuardarTodo.png"))); // NOI18N
         btnGuardarUsu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarUsuActionPerformed(evt);
@@ -1139,7 +1139,7 @@ public class Sistema extends javax.swing.JFrame {
         });
         jPanel8.add(btnGuardarUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 60, 40));
 
-        btnEliminarUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/eliminar.png"))); // NOI18N
+        btnEliminarUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
         btnEliminarUsu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarUsuActionPerformed(evt);
@@ -1147,7 +1147,7 @@ public class Sistema extends javax.swing.JFrame {
         });
         jPanel8.add(btnEliminarUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 380, 60, 40));
 
-        btnNuevoUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/nuevo.png"))); // NOI18N
+        btnNuevoUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevo.png"))); // NOI18N
         btnNuevoUsu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoUsuActionPerformed(evt);
@@ -1187,7 +1187,7 @@ public class Sistema extends javax.swing.JFrame {
         cbxRol.setBorder(null);
         jPanel8.add(cbxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 345, 230, 25));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Cuadrito.png"))); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cuadrito.png"))); // NOI18N
         jPanel8.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 270, 360));
 
         jLabel53.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 48)); // NOI18N
@@ -1228,7 +1228,7 @@ public class Sistema extends javax.swing.JFrame {
         jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel58.setText("VENTA DETALLADA");
         jLabel58.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel9.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 610, 50));
+        jPanel9.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 24, 610, 50));
 
         jLabel18.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 51, 204));
@@ -1251,10 +1251,10 @@ public class Sistema extends javax.swing.JFrame {
         jPanel9.add(d_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 90, 30));
 
         d_venta.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jPanel9.add(d_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, 110, 30));
+        jPanel9.add(d_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 110, 30));
 
         d_fechaventa.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jPanel9.add(d_fechaventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 110, 30));
+        jPanel9.add(d_fechaventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 110, 30));
 
         jLabel19.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 51, 204));
@@ -1264,33 +1264,33 @@ public class Sistema extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 51, 204));
         jLabel20.setText("Fecha");
-        jPanel9.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, -1, -1));
+        jPanel9.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 51, 204));
         jLabel22.setText("Venta ");
-        jPanel9.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
+        jPanel9.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, -1, -1));
 
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Bordeplomo.jpeg"))); // NOI18N
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Bordeplomo.jpeg"))); // NOI18N
         jPanel9.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 880, 30));
 
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Bordeplomo.jpeg"))); // NOI18N
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Bordeplomo.jpeg"))); // NOI18N
         jPanel9.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 185, 880, 20));
 
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Bordeplomo.jpeg"))); // NOI18N
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Bordeplomo.jpeg"))); // NOI18N
         jPanel9.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 395, 880, 10));
 
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Bordeplomo.jpeg"))); // NOI18N
-        jPanel9.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 80, 30));
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Bordeplomo.jpeg"))); // NOI18N
+        jPanel9.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 80, 30));
 
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Bordeplomo.jpeg"))); // NOI18N
-        jPanel9.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 80, 30));
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Bordeplomo.jpeg"))); // NOI18N
+        jPanel9.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 80, 30));
 
         jTabbedPane1.addTab("8", jPanel9);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 202, 903, 500));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Sistema_color.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Sistema_color.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
