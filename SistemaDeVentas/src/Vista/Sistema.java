@@ -185,7 +185,6 @@ public class Sistema extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnCambiar = new javax.swing.JButton();
         LabelVendedor = new javax.swing.JLabel();
         btnNuevaVenta = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
@@ -354,14 +353,6 @@ public class Sistema extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 196, 235, 27));
-
-        btnCambiar.setText("CAMBIAR");
-        btnCambiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCambiarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 640, -1, -1));
 
         LabelVendedor.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         LabelVendedor.setForeground(new java.awt.Color(255, 255, 255));
@@ -625,13 +616,13 @@ public class Sistema extends javax.swing.JFrame {
         txtNombreClienteventa.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         jPanel2.add(txtNombreClienteventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 240, 33));
 
-        btnGenerarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/print.png"))); // NOI18N
+        btnGenerarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/buy.png"))); // NOI18N
         btnGenerarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarVentaActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGenerarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, -1, 45));
+        jPanel2.add(btnGenerarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 70, 45));
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/money.png"))); // NOI18N
@@ -983,6 +974,7 @@ public class Sistema extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TableVentas.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         TableVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -998,20 +990,23 @@ public class Sistema extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(TableVentas);
         if (TableVentas.getColumnModel().getColumnCount() > 0) {
-            TableVentas.getColumnModel().getColumn(0).setPreferredWidth(20);
-            TableVentas.getColumnModel().getColumn(3).setPreferredWidth(20);
-            TableVentas.getColumnModel().getColumn(4).setPreferredWidth(20);
+            TableVentas.getColumnModel().getColumn(0).setMinWidth(70);
+            TableVentas.getColumnModel().getColumn(0).setMaxWidth(70);
+            TableVentas.getColumnModel().getColumn(3).setMinWidth(140);
+            TableVentas.getColumnModel().getColumn(3).setMaxWidth(140);
+            TableVentas.getColumnModel().getColumn(4).setMinWidth(120);
+            TableVentas.getColumnModel().getColumn(4).setMaxWidth(120);
         }
 
         jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 880, 310));
 
-        btnVentaDetallada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/pdf.png"))); // NOI18N
+        btnVentaDetallada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/detalle.png"))); // NOI18N
         btnVentaDetallada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentaDetalladaActionPerformed(evt);
             }
         });
-        jPanel6.add(btnVentaDetallada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jPanel6.add(btnVentaDetallada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 60, 40));
         jPanel6.add(txtIdVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, 0));
 
         jLabel51.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 58)); // NOI18N
@@ -1200,7 +1195,7 @@ public class Sistema extends javax.swing.JFrame {
         jLabel53.setText("TABLA USUARIOS");
         jLabel53.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel8.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 20, 910, 40));
-        jPanel8.add(txtIdusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
+        jPanel8.add(txtIdusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 10, 0));
 
         jTabbedPane1.addTab("7", jPanel8);
 
@@ -1810,16 +1805,6 @@ public class Sistema extends javax.swing.JFrame {
 
     boolean cambiar = false;
 
-    private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
-        if (!cambiar) {
-            jLabel1.setIcon(new ImageIcon(getClass().getResource("/Img/Sistema_dark.png")));
-            cambiar = true;
-        } else if (cambiar) {
-            jLabel1.setIcon(new ImageIcon(getClass().getResource("/Img/Sistema_color.png")));
-            cambiar = false;
-        }
-    }//GEN-LAST:event_btnCambiarActionPerformed
-
     private void btnGuardarUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarUsuActionPerformed
         if (txtNombre.getText().equals("") || txtUsuario.getText().equals("") || txtPass.getPassword().equals("")) {
             JOptionPane.showMessageDialog(null, "Todo los campos son requeridos");
@@ -1841,17 +1826,15 @@ public class Sistema extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarUsuActionPerformed
 
     private void btnEliminarUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarUsuActionPerformed
-        if (!"".equals(txtIdproducto.getText())) {
+        if (!"".equals(txtIdusuario.getText())) {
             int pregunta = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar");
             if (pregunta == 0) {
-                int id = Integer.parseInt(txtIdproducto.getText());
-                proDao.EliminarProductos(id);
-                LimpiarTable();
-                LimpiarProductos();
-                ListarProductos();
-                btnEditarpro.setEnabled(false);
-                btnEliminarPro.setEnabled(false);
-                btnGuardarpro.setEnabled(true);
+                int id = Integer.parseInt(txtIdusuario.getText());
+                login.eliminarUsuario(id);
+                LimpiarTableUsuario();
+                LimpiarUsuarios();
+                ListarUsuarios();
+                btnEliminarUsu.setEnabled(false);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona una fila");
@@ -1869,13 +1852,9 @@ public class Sistema extends javax.swing.JFrame {
         btnGuardarUsu.setEnabled(true);
         int fila = TableUsuarios.rowAtPoint(evt.getPoint());
         txtIdusuario.setText(TableUsuarios.getValueAt(fila, 0).toString());
-        txtUsuario.setText(TableUsuarios.getValueAt(fila, 1).toString());
-        pro = proDao.BuscarId(Integer.parseInt(txtIdproducto.getText()));
-        txtCodigoPro.setText(pro.getCodigo());
-        txtDesPro.setText(pro.getNombre());
-        txtCantPro.setText("" + pro.getStock());
-        txtPrecioPro.setText("" + pro.getPrecio());
-        cbxProveedorPro.setSelectedItem(new ComboTo(pro.getProveedor(), pro.getProveedorPro()));
+        txtUsuario.setText(TableUsuarios.getValueAt(fila, 2).toString());
+        txtNombre.setText(TableUsuarios.getValueAt(fila, 1).toString());
+        cbxRol.setSelectedItem(TableUsuarios.getValueAt(fila, 3).toString());
     }//GEN-LAST:event_TableUsuariosMouseClicked
 
     public static void main(String args[]) {
@@ -1898,7 +1877,6 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JTable TableVentaDetallada;
     private javax.swing.JTable TableVentas;
     private javax.swing.JButton btnActualizarConfig;
-    private javax.swing.JButton btnCambiar;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnConfig;
@@ -2147,10 +2125,18 @@ public class Sistema extends javax.swing.JFrame {
             tmp.removeRow(0);
         }
     }
-
+    
     private void LimpiarTableVentas() {
         tmp = (DefaultTableModel) TableVentas.getModel();
         int fila = TableVentas.getRowCount();
+        for (int i = 0; i < fila; i++) {
+            tmp.removeRow(0);
+        }
+    }
+
+    private void LimpiarTableUsuario() {
+        tmp = (DefaultTableModel) TableUsuarios.getModel();
+        int fila = TableUsuarios.getRowCount();
         for (int i = 0; i < fila; i++) {
             tmp.removeRow(0);
         }
