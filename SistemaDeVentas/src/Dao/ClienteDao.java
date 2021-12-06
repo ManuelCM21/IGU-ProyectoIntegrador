@@ -2,7 +2,7 @@
 package Dao;
 
 import Modelo.ClienteTo;
-import Modelo.Conexion;
+import Conexion.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,7 +1,7 @@
 
 package Dao;
 
-import Modelo.Conexion;
+import Conexion.Conexion;
 import Modelo.ProveedorTo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

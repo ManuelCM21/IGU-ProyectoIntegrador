@@ -2,7 +2,7 @@
 package Dao;
 
 import Modelo.ConfigTo;
-import Modelo.Conexion;
+import Conexion.Conexion;
 import Modelo.ProductosTo;
 import Modelo.ProveedorTo;
 import java.sql.Connection;
