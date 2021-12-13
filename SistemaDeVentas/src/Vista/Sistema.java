@@ -15,6 +15,8 @@ import Modelo.VentaTo;
 import Dao.VentaDao;
 import Conexion.Conexion;
 import Modelo.LoginTo;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,8 +26,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Sistema extends javax.swing.JFrame {
@@ -59,6 +61,13 @@ public class Sistema extends javax.swing.JFrame {
     public Sistema() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
+        modificarTabla(TableVenta);
+        modificarTabla(TableVentas);
+        modificarTabla(TableVentaDetallada);
+        modificarTabla(TableUsuarios);
+        modificarTabla(TableProducto);
+        modificarTabla(TableCliente);
+        modificarTabla(TableProveedor);
     }
 
     public Sistema(LoginTo priv) {
@@ -504,14 +513,12 @@ public class Sistema extends javax.swing.JFrame {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, -1, -1));
 
         txtCodigoVenta.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        txtCodigoVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoVentaActionPerformed(evt);
-            }
-        });
         txtCodigoVenta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCodigoVentaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCodigoVentaKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodigoVentaKeyTyped(evt);
@@ -528,11 +535,6 @@ public class Sistema extends javax.swing.JFrame {
         jPanel2.add(txtDescripcionVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 250, 33));
 
         txtCantidadVenta.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        txtCantidadVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantidadVentaActionPerformed(evt);
-            }
-        });
         txtCantidadVenta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCantidadVentaKeyPressed(evt);
@@ -561,7 +563,8 @@ public class Sistema extends javax.swing.JFrame {
         });
         jPanel2.add(txtStockDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 79, 33));
 
-        TableVenta.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        TableVenta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+        TableVenta.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         TableVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1296,21 +1299,17 @@ public class Sistema extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCodigoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoVentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoVentaActionPerformed
-
     private void txtCodigoVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoVentaKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             if (!"".equals(txtCodigoVenta.getText())) {
-                String cod = txtCodigoVenta.getText();
-                pro = proDao.BuscarPro(cod);
+//                String cod = txtCodigoVenta.getText();
+//                pro = proDao.BuscarPro(cod);
                 if (pro.getNombre() != null) {
-                    txtIdPro.setText("" + pro.getId());
-                    txtDescripcionVenta.setText("" + pro.getNombre());
-                    txtPrecioVenta.setText("" + pro.getPrecio());
-                    txtStockDisponible.setText("" + pro.getStock());
+//                    txtIdPro.setText("" + pro.getId());
+//                    txtDescripcionVenta.setText("" + pro.getNombre());
+//                    txtPrecioVenta.setText("" + pro.getPrecio());
+//                    txtStockDisponible.setText("" + pro.getStock());
                     txtCantidadVenta.requestFocus();
                 } else {
                     LimparVenta();
@@ -1318,24 +1317,19 @@ public class Sistema extends javax.swing.JFrame {
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Ingrese el codigo del productos");
+                LimparVenta();
                 txtCodigoVenta.requestFocus();
             }
         }
     }//GEN-LAST:event_txtCodigoVentaKeyPressed
 
     private void txtCodigoVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoVentaKeyTyped
-        // TODO add your handling code here:
         event.numberKeyPress(evt);
     }//GEN-LAST:event_txtCodigoVentaKeyTyped
 
     private void txtDescripcionVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionVentaKeyTyped
-        // TODO add your handling code here:
         event.textKeyPress(evt);
     }//GEN-LAST:event_txtDescripcionVentaKeyTyped
-
-    private void txtCantidadVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadVentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantidadVentaActionPerformed
 
     private void txtCantidadVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadVentaKeyPressed
         // TODO add your handling code here:
@@ -1429,12 +1423,16 @@ public class Sistema extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (TableVenta.getRowCount() > 0) {
             if (!"".equals(txtNombreClienteventa.getText())) {
-                RegistrarVenta();
-                RegistrarDetalle();
-                ActualizarStock();
-                LimpiarTableVenta();
-                LimpiarClienteventa();
-                LabelTotal.setText("-------");
+                int pregunta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de realizar la venta?");
+                if (pregunta == 0) {
+                    RegistrarVenta();
+                    RegistrarDetalle();
+                    ActualizarStock();
+                    LimpiarTableVenta();
+                    LimpiarClienteventa();
+                    LabelTotal.setText("-------");
+                    JOptionPane.showMessageDialog(null, "Se registro correctamente");
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Debes buscar un cliente");
             }
@@ -1857,6 +1855,19 @@ public class Sistema extends javax.swing.JFrame {
         cbxRol.setSelectedItem(TableUsuarios.getValueAt(fila, 3).toString());
     }//GEN-LAST:event_TableUsuariosMouseClicked
 
+    private void txtCodigoVentaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoVentaKeyReleased
+        if (!"".equals(txtCodigoVenta.getText())) {
+            String cod = txtCodigoVenta.getText();
+            pro = proDao.BuscarPro(cod);
+            if (pro.getNombre() != null) {
+                txtIdPro.setText("" + pro.getId());
+                txtDescripcionVenta.setText("" + pro.getNombre());
+                txtPrecioVenta.setText("" + pro.getPrecio());
+                txtStockDisponible.setText("" + pro.getStock());
+            }
+        }
+    }//GEN-LAST:event_txtCodigoVentaKeyReleased
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -2125,7 +2136,7 @@ public class Sistema extends javax.swing.JFrame {
             tmp.removeRow(0);
         }
     }
-    
+
     private void LimpiarTableVentas() {
         tmp = (DefaultTableModel) TableVentas.getModel();
         int fila = TableVentas.getRowCount();
@@ -2170,6 +2181,14 @@ public class Sistema extends javax.swing.JFrame {
             cbxProveedorPro.addItem(new ComboTo(id, nombre));
         }
     }
+    
+    private void modificarTabla(JTable tabla) {
+        tabla.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        tabla.getTableHeader().setOpaque(false);
+        tabla.getTableHeader().setBackground(Color.BLACK);
+        tabla.getTableHeader().setForeground(Color.WHITE);
+        tabla.setRowHeight(20);
+    }
 
     public void ventaDt(int idventa, int Cliente, double total, String fecha) {
         String prove = "SELECT * FROM clientes WHERE id = ?";
@@ -2210,4 +2229,5 @@ public class Sistema extends javax.swing.JFrame {
             System.out.println(e.toString());
         }
     }
+    
 }
