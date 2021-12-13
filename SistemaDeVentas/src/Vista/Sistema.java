@@ -30,7 +30,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class Sistema extends javax.swing.JFrame {
+public final class Sistema extends javax.swing.JFrame {
 
     Date fechaVenta = new Date();
     String fechaActual = new SimpleDateFormat("dd/MM/yyyy").format(fechaVenta);
@@ -61,13 +61,6 @@ public class Sistema extends javax.swing.JFrame {
     public Sistema() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
-        modificarTabla(TableVenta);
-        modificarTabla(TableVentas);
-        modificarTabla(TableVentaDetallada);
-        modificarTabla(TableUsuarios);
-        modificarTabla(TableProducto);
-        modificarTabla(TableCliente);
-        modificarTabla(TableProveedor);
     }
 
     public Sistema(LoginTo priv) {
@@ -90,6 +83,13 @@ public class Sistema extends javax.swing.JFrame {
         } else {
             LabelVendedor.setText(priv.getNombre());
         }
+        modificarTabla(TableVenta);
+        modificarTabla(TableVentas);
+        modificarTabla(TableVentaDetallada);
+        modificarTabla(TableUsuarios);
+        modificarTabla(TableProducto);
+        modificarTabla(TableCliente);
+        modificarTabla(TableProveedor);
     }
 
     public void ListarCliente() {
@@ -182,13 +182,6 @@ public class Sistema extends javax.swing.JFrame {
 
     }
 
-    public void LimpiarTable() {
-        for (int i = 0; i < modelo.getRowCount(); i++) {
-            modelo.removeRow(i);
-            i = i - 1;
-        }
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -220,7 +213,7 @@ public class Sistema extends javax.swing.JFrame {
         btnEliminarventa = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txtRucVenta = new javax.swing.JTextField();
+        txtDniVenta = new javax.swing.JTextField();
         txtNombreClienteventa = new javax.swing.JTextField();
         btnGenerarVenta = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -484,7 +477,7 @@ public class Sistema extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
@@ -547,23 +540,12 @@ public class Sistema extends javax.swing.JFrame {
 
         txtPrecioVenta.setEditable(false);
         txtPrecioVenta.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        txtPrecioVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecioVentaActionPerformed(evt);
-            }
-        });
         jPanel2.add(txtPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 80, 33));
 
         txtStockDisponible.setEditable(false);
         txtStockDisponible.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        txtStockDisponible.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStockDisponibleActionPerformed(evt);
-            }
-        });
         jPanel2.add(txtStockDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 79, 33));
 
-        TableVenta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         TableVenta.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         TableVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -604,16 +586,16 @@ public class Sistema extends javax.swing.JFrame {
         jLabel9.setText("Nombre:");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, -1, -1));
 
-        txtRucVenta.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        txtRucVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtDniVenta.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        txtDniVenta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtRucVentaKeyPressed(evt);
+                txtDniVentaKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtRucVentaKeyTyped(evt);
+                txtDniVentaKeyTyped(evt);
             }
         });
-        jPanel2.add(txtRucVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 116, 33));
+        jPanel2.add(txtDniVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 116, 33));
 
         txtNombreClienteventa.setEditable(false);
         txtNombreClienteventa.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
@@ -1303,13 +1285,7 @@ public class Sistema extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             if (!"".equals(txtCodigoVenta.getText())) {
-//                String cod = txtCodigoVenta.getText();
-//                pro = proDao.BuscarPro(cod);
                 if (pro.getNombre() != null) {
-//                    txtIdPro.setText("" + pro.getId());
-//                    txtDescripcionVenta.setText("" + pro.getNombre());
-//                    txtPrecioVenta.setText("" + pro.getPrecio());
-//                    txtStockDisponible.setText("" + pro.getStock());
                     txtCantidadVenta.requestFocus();
                 } else {
                     LimparVenta();
@@ -1382,14 +1358,6 @@ public class Sistema extends javax.swing.JFrame {
         event.numberKeyPress(evt);
     }//GEN-LAST:event_txtCantidadVentaKeyTyped
 
-    private void txtPrecioVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioVentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecioVentaActionPerformed
-
-    private void txtStockDisponibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockDisponibleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtStockDisponibleActionPerformed
-
     private void btnEliminarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarventaActionPerformed
         // TODO add your handling code here:
         modelo = (DefaultTableModel) TableVenta.getModel();
@@ -1398,26 +1366,26 @@ public class Sistema extends javax.swing.JFrame {
         txtCodigoVenta.requestFocus();
     }//GEN-LAST:event_btnEliminarventaActionPerformed
 
-    private void txtRucVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRucVentaKeyPressed
+    private void txtDniVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniVentaKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (!"".equals(txtRucVenta.getText())) {
-                int dni = Integer.parseInt(txtRucVenta.getText());
+            if (!"".equals(txtDniVenta.getText())) {
+                int dni = Integer.parseInt(txtDniVenta.getText());
                 cl = client.Buscarcliente(dni);
                 if (cl.getNombre() != null) {
                     txtNombreClienteventa.setText("" + cl.getNombre());
                     txtIdCV.setText("" + cl.getId());
                 } else {
-                    txtRucVenta.setText("");
+                    txtDniVenta.setText("");
                     JOptionPane.showMessageDialog(null, "El cliente no existe");
                 }
             }
         }
-    }//GEN-LAST:event_txtRucVentaKeyPressed
+    }//GEN-LAST:event_txtDniVentaKeyPressed
 
-    private void txtRucVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRucVentaKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRucVentaKeyTyped
+    private void txtDniVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniVentaKeyTyped
+        event.numberKeyPress(evt);
+    }//GEN-LAST:event_txtDniVentaKeyTyped
 
     private void btnGenerarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarVentaActionPerformed
         // TODO add your handling code here:
@@ -1509,7 +1477,7 @@ public class Sistema extends javax.swing.JFrame {
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
-        LimpiarTable();
+        LimpiarTableCliente();
         ListarCliente();
         btnEditarCliente.setEnabled(false);
         btnEliminarCliente.setEnabled(false);
@@ -2003,6 +1971,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JTextField txtDireccionProveedor;
     private javax.swing.JTextField txtDirecionCliente;
     private javax.swing.JTextField txtDniCliente;
+    private javax.swing.JTextField txtDniVenta;
     private javax.swing.JLabel txtFechaVenta;
     private javax.swing.JTextField txtIdCV;
     private javax.swing.JTextField txtIdCliente;
@@ -2023,7 +1992,6 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrecioVenta;
     private javax.swing.JTextField txtRucConfig;
     private javax.swing.JTextField txtRucProveedor;
-    private javax.swing.JTextField txtRucVenta;
     private javax.swing.JTextField txtStockDisponible;
     private javax.swing.JTextField txtTelefonoCliente;
     private javax.swing.JTextField txtTelefonoConfig;
@@ -2129,9 +2097,24 @@ public class Sistema extends javax.swing.JFrame {
         }
     }
 
+    public void LimpiarTable() {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            modelo.removeRow(i);
+            i = i - 1;
+        }
+    }
+
     private void LimpiarTableVenta() {
         tmp = (DefaultTableModel) TableVenta.getModel();
         int fila = TableVenta.getRowCount();
+        for (int i = 0; i < fila; i++) {
+            tmp.removeRow(0);
+        }
+    }
+
+    private void LimpiarTableCliente() {
+        tmp = (DefaultTableModel) TableCliente.getModel();
+        int fila = TableCliente.getRowCount();
         for (int i = 0; i < fila; i++) {
             tmp.removeRow(0);
         }
@@ -2162,7 +2145,7 @@ public class Sistema extends javax.swing.JFrame {
     }
 
     private void LimpiarClienteventa() {
-        txtRucVenta.setText("");
+        txtDniVenta.setText("");
         txtNombreClienteventa.setText("");
         txtIdCV.setText("");
     }
@@ -2181,7 +2164,7 @@ public class Sistema extends javax.swing.JFrame {
             cbxProveedorPro.addItem(new ComboTo(id, nombre));
         }
     }
-    
+
     private void modificarTabla(JTable tabla) {
         tabla.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 14));
         tabla.getTableHeader().setOpaque(false);
@@ -2229,5 +2212,5 @@ public class Sistema extends javax.swing.JFrame {
             System.out.println(e.toString());
         }
     }
-    
+
 }
