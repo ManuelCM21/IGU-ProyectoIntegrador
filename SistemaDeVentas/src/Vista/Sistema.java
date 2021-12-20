@@ -26,6 +26,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -49,6 +51,7 @@ public final class Sistema extends javax.swing.JFrame {
     LoginDao login = new LoginDao();
     DefaultTableModel modelo = new DefaultTableModel();
     DefaultTableModel tmp = new DefaultTableModel();
+    ButtonGroup tipo = new ButtonGroup();
     int item;
     double Totalpagar = 0.00;
 
@@ -75,7 +78,6 @@ public final class Sistema extends javax.swing.JFrame {
         txtIdCV.setVisible(false);
         ListarConfig();
         if (priv.getRol().equals("Asistente")) {
-            btnProductos.setEnabled(false);
             btnProveedor.setEnabled(false);
             btnUsuarios.setEnabled(false);
             btnConfig.setEnabled(false);
@@ -83,6 +85,8 @@ public final class Sistema extends javax.swing.JFrame {
         } else {
             LabelVendedor.setText(priv.getNombre());
         }
+        tipo.add(v_contado);
+        tipo.add(v_credito);
         modificarTabla(TableVenta);
         modificarTabla(TableVentas);
         modificarTabla(TableVentaDetallada);
@@ -90,6 +94,8 @@ public final class Sistema extends javax.swing.JFrame {
         modificarTabla(TableProducto);
         modificarTabla(TableCliente);
         modificarTabla(TableProveedor);
+        setTitle("Sistema de Ventas");
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/carro.png")).getImage());
     }
 
     public void ListarCliente() {
@@ -169,13 +175,15 @@ public final class Sistema extends javax.swing.JFrame {
     public void ListarVentas() {
         List<VentaTo> ListarVenta = Vdao.Listarventas();
         modelo = (DefaultTableModel) TableVentas.getModel();
-        Object[] ob = new Object[5];
+        Object[] ob = new Object[7];
         for (int i = 0; i < ListarVenta.size(); i++) {
             ob[0] = ListarVenta.get(i).getId();
             ob[1] = ListarVenta.get(i).getNombre_cli();
             ob[2] = ListarVenta.get(i).getVendedor();
             ob[3] = ListarVenta.get(i).getTotal();
             ob[4] = ListarVenta.get(i).getFecha();
+            ob[5] = ListarVenta.get(i).getDebe();
+            ob[6] = ListarVenta.get(i).getEstado();
             modelo.addRow(ob);
         }
         TableVentas.setModel(modelo);
@@ -220,6 +228,12 @@ public final class Sistema extends javax.swing.JFrame {
         LabelTotal = new javax.swing.JLabel();
         txtIdCV = new javax.swing.JTextField();
         txtIdPro = new javax.swing.JTextField();
+        v_contado = new javax.swing.JRadioButton();
+        v_credito = new javax.swing.JRadioButton();
+        LabelPago = new javax.swing.JLabel();
+        txtEntregado = new javax.swing.JTextField();
+        LabelDebe = new javax.swing.JLabel();
+        txtDebe = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         txtDniCliente = new javax.swing.JTextField();
@@ -283,6 +297,17 @@ public final class Sistema extends javax.swing.JFrame {
         txtIdVenta = new javax.swing.JTextField();
         jLabel51 = new javax.swing.JLabel();
         txtFechaVenta = new javax.swing.JLabel();
+        btnPagar = new javax.swing.JButton();
+        txtBuscarVenta = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        LabelPago1 = new javax.swing.JLabel();
+        txtPago = new javax.swing.JTextField();
+        LabelDebe1 = new javax.swing.JLabel();
+        txtSaldo = new javax.swing.JTextField();
+        LabelDebe2 = new javax.swing.JLabel();
+        txtEstado = new javax.swing.JTextField();
+        btnActualizar = new javax.swing.JButton();
+        txtdebe = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         btnActualizarConfig = new javax.swing.JButton();
         txtMensaje = new javax.swing.JTextField();
@@ -477,7 +502,7 @@ public final class Sistema extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
@@ -546,6 +571,7 @@ public final class Sistema extends javax.swing.JFrame {
         txtStockDisponible.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         jPanel2.add(txtStockDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 79, 33));
 
+        TableVenta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         TableVenta.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         TableVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -563,7 +589,7 @@ public final class Sistema extends javax.swing.JFrame {
             TableVenta.getColumnModel().getColumn(1).setMaxWidth(300);
         }
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 131, 843, 200));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 131, 843, 150));
 
         btnEliminarventa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_eliminar.png"))); // NOI18N
         btnEliminarventa.setFocusable(false);
@@ -579,12 +605,12 @@ public final class Sistema extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 51, 204));
         jLabel8.setText("Dni");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 204));
         jLabel9.setText("Nombre:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, -1, -1));
 
         txtDniVenta.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         txtDniVenta.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -595,11 +621,11 @@ public final class Sistema extends javax.swing.JFrame {
                 txtDniVentaKeyTyped(evt);
             }
         });
-        jPanel2.add(txtDniVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 116, 33));
+        jPanel2.add(txtDniVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 116, 33));
 
         txtNombreClienteventa.setEditable(false);
         txtNombreClienteventa.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        jPanel2.add(txtNombreClienteventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 240, 33));
+        jPanel2.add(txtNombreClienteventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 310, 33));
 
         btnGenerarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buy.png"))); // NOI18N
         btnGenerarVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -607,22 +633,74 @@ public final class Sistema extends javax.swing.JFrame {
                 btnGenerarVentaActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGenerarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 70, 45));
+        jPanel2.add(btnGenerarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 400, 70, 45));
 
-        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/money.png"))); // NOI18N
         jLabel10.setText("Total a Pagar:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, -1, -1));
 
         LabelTotal.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         LabelTotal.setText("-----");
-        jPanel2.add(LabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 400, -1, -1));
+        jPanel2.add(LabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 340, -1, -1));
 
         txtIdCV.setForeground(new java.awt.Color(255, 255, 255));
         txtIdCV.setCaretColor(new java.awt.Color(255, 255, 255));
         txtIdCV.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jPanel2.add(txtIdCV, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 395, 0, 0));
         jPanel2.add(txtIdPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(678, 146, -1, 0));
+
+        v_contado.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        v_contado.setText("Contado");
+        v_contado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v_contadoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(v_contado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, -1, -1));
+
+        v_credito.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        v_credito.setText("Credito");
+        v_credito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v_creditoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(v_credito, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 90, -1));
+
+        LabelPago.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        LabelPago.setForeground(new java.awt.Color(0, 51, 204));
+        LabelPago.setText("Pago:");
+        jPanel2.add(LabelPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, -1, -1));
+
+        txtEntregado.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        txtEntregado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEntregadoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEntregadoKeyTyped(evt);
+            }
+        });
+        jPanel2.add(txtEntregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 410, 150, -1));
+
+        LabelDebe.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        LabelDebe.setForeground(new java.awt.Color(0, 51, 204));
+        LabelDebe.setText("Debe:");
+        jPanel2.add(LabelDebe, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, -1, -1));
+
+        txtDebe.setEditable(false);
+        txtDebe.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        txtDebe.setText("0.0");
+        txtDebe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDebeKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDebeKeyTyped(evt);
+            }
+        });
+        jPanel2.add(txtDebe, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 150, -1));
 
         jTabbedPane1.addTab("1", jPanel2);
 
@@ -704,12 +782,13 @@ public final class Sistema extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cuadrito.png"))); // NOI18N
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 270, 360));
 
+        TableCliente.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         TableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "DNI/RUC", "NOMBRE", "TELÉFONO", "DIRECCIÓN"
+                "ID", "DNI", "NOMBRE", "TELÉFONO", "DIRECCIÓN"
             }
         ));
         TableCliente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -719,8 +798,14 @@ public final class Sistema extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(TableCliente);
         if (TableCliente.getColumnModel().getColumnCount() > 0) {
-            TableCliente.getColumnModel().getColumn(0).setMinWidth(80);
+            TableCliente.getColumnModel().getColumn(0).setMinWidth(60);
             TableCliente.getColumnModel().getColumn(0).setMaxWidth(60);
+            TableCliente.getColumnModel().getColumn(1).setMinWidth(100);
+            TableCliente.getColumnModel().getColumn(1).setMaxWidth(100);
+            TableCliente.getColumnModel().getColumn(2).setMinWidth(180);
+            TableCliente.getColumnModel().getColumn(2).setMaxWidth(180);
+            TableCliente.getColumnModel().getColumn(3).setMinWidth(100);
+            TableCliente.getColumnModel().getColumn(3).setMaxWidth(100);
         }
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 600, 360));
@@ -735,6 +820,7 @@ public final class Sistema extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TableProveedor.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         TableProveedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -839,7 +925,7 @@ public final class Sistema extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TableProducto.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        TableProducto.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         TableProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -965,7 +1051,7 @@ public final class Sistema extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "CLIENTE", "VENDEDOR", "TOTAL", "Fecha"
+                "ID", "CLIENTE", "VENDEDOR", "TOTAL", "FECHA", "DEBE", "ESTADO"
             }
         ));
         TableVentas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -981,25 +1067,105 @@ public final class Sistema extends javax.swing.JFrame {
             TableVentas.getColumnModel().getColumn(3).setMaxWidth(140);
             TableVentas.getColumnModel().getColumn(4).setMinWidth(120);
             TableVentas.getColumnModel().getColumn(4).setMaxWidth(120);
+            TableVentas.getColumnModel().getColumn(5).setMinWidth(100);
+            TableVentas.getColumnModel().getColumn(5).setMaxWidth(100);
+            TableVentas.getColumnModel().getColumn(6).setMinWidth(110);
+            TableVentas.getColumnModel().getColumn(6).setMaxWidth(110);
         }
 
-        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 880, 310));
+        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 880, 250));
 
-        btnVentaDetallada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/detalle.png"))); // NOI18N
+        btnVentaDetallada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reporte.png"))); // NOI18N
+        btnVentaDetallada.setBorderPainted(false);
         btnVentaDetallada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentaDetalladaActionPerformed(evt);
             }
         });
-        jPanel6.add(btnVentaDetallada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 60, 40));
+        jPanel6.add(btnVentaDetallada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 50, 40));
         jPanel6.add(txtIdVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, 0));
 
-        jLabel51.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 58)); // NOI18N
+        jLabel51.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 54)); // NOI18N
         jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel51.setText("REPORTE DE VENTAS");
         jLabel51.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel6.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 900, 50));
-        jPanel6.add(txtFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 10, 10));
+        jPanel6.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 900, 50));
+        jPanel6.add(txtFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, 10));
+
+        btnPagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pago.png"))); // NOI18N
+        btnPagar.setBorderPainted(false);
+        btnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagarActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 70, 60, 50));
+
+        txtBuscarVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarVentaKeyReleased(evt);
+            }
+        });
+        jPanel6.add(txtBuscarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 92, 190, 30));
+
+        jLabel33.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        jLabel33.setText("Buscar");
+        jPanel6.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 95, -1, -1));
+
+        LabelPago1.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        LabelPago1.setForeground(new java.awt.Color(0, 51, 204));
+        LabelPago1.setText("Pago:");
+        jPanel6.add(LabelPago1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
+
+        txtPago.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        txtPago.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPagoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPagoKeyTyped(evt);
+            }
+        });
+        jPanel6.add(txtPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 150, -1));
+
+        LabelDebe1.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        LabelDebe1.setForeground(new java.awt.Color(0, 51, 204));
+        LabelDebe1.setText("Estado:");
+        jPanel6.add(LabelDebe1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, -1, -1));
+
+        txtSaldo.setEditable(false);
+        txtSaldo.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        txtSaldo.setText("0.0");
+        txtSaldo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSaldoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSaldoKeyTyped(evt);
+            }
+        });
+        jPanel6.add(txtSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 150, -1));
+
+        LabelDebe2.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        LabelDebe2.setForeground(new java.awt.Color(0, 51, 204));
+        LabelDebe2.setText("Debe:");
+        jPanel6.add(LabelDebe2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, -1, -1));
+
+        txtEstado.setEditable(false);
+        txtEstado.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        jPanel6.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 130, 30));
+
+        btnActualizar.setBackground(new java.awt.Color(0, 0, 0));
+        btnActualizar.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 410, 140, 30));
+        jPanel6.add(txtdebe, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, -1, -1));
 
         jTabbedPane1.addTab("5", jPanel6);
 
@@ -1209,7 +1375,7 @@ public final class Sistema extends javax.swing.JFrame {
 
         jPanel9.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 880, 210));
 
-        jLabel58.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 48)); // NOI18N
+        jLabel58.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 50)); // NOI18N
         jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel58.setText("VENTA DETALLADA");
         jLabel58.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -1396,7 +1562,7 @@ public final class Sistema extends javax.swing.JFrame {
                     RegistrarVenta();
                     RegistrarDetalle();
                     ActualizarStock();
-                    LimpiarTableVenta();
+                    LimpiarTabla(TableVenta);
                     LimpiarClienteventa();
                     LabelTotal.setText("-------");
                     JOptionPane.showMessageDialog(null, "Se registro correctamente");
@@ -1455,17 +1621,19 @@ public final class Sistema extends javax.swing.JFrame {
         int fila = TableVentas.rowAtPoint(evt.getPoint());
         txtIdVenta.setText(TableVentas.getValueAt(fila, 0).toString());
         txtFechaVenta.setText(TableVentas.getValueAt(fila, 4).toString());
+        txtSaldo.setText(TableVentas.getValueAt(fila, 5).toString());
+        txtdebe.setText(TableVentas.getValueAt(fila, 5).toString());
+        txtEstado.setText(TableVentas.getValueAt(fila, 6).toString());
     }//GEN-LAST:event_TableVentasMouseClicked
 
     private void btnVentaDetalladaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaDetalladaActionPerformed
         if (txtIdVenta.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Selecciona una fila");
         } else {
-            LimpiarTableDetalle();
+            LimpiarTabla(TableVentaDetallada);
             LimpiarDetalle();
             v = Vdao.BuscarVenta(Integer.parseInt(txtIdVenta.getText()));
             ventaDt(v.getId(), v.getCliente(), v.getTotal(), txtFechaVenta.getText());
-            LimpiarTableVentas();
             jTabbedPane1.setSelectedIndex(7);
         }
     }//GEN-LAST:event_btnVentaDetalladaActionPerformed
@@ -1477,7 +1645,7 @@ public final class Sistema extends javax.swing.JFrame {
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
-        LimpiarTableCliente();
+        LimpiarTabla(TableCliente);
         ListarCliente();
         btnEditarCliente.setEnabled(false);
         btnEliminarCliente.setEnabled(false);
@@ -1487,7 +1655,7 @@ public final class Sistema extends javax.swing.JFrame {
 
     private void btnProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedorActionPerformed
         // TODO add your handling code here:
-        LimpiarTable();
+        LimpiarTabla(TableProveedor);
         ListarProveedor();
         jTabbedPane1.setSelectedIndex(2);
         btnEditarProveedor.setEnabled(false);
@@ -1504,7 +1672,7 @@ public final class Sistema extends javax.swing.JFrame {
 
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
         // TODO add your handling code here:
-        LimpiarTable();
+        LimpiarTabla(TableProducto);
         ListarProductos();
         jTabbedPane1.setSelectedIndex(3);
         btnEditarpro.setEnabled(false);
@@ -1516,7 +1684,7 @@ public final class Sistema extends javax.swing.JFrame {
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
         // TODO add your handling code here:
         jTabbedPane1.setSelectedIndex(4);
-        LimpiarTable();
+        LimpiarTabla(TableVentas);
         ListarVentas();
     }//GEN-LAST:event_btnVentasActionPerformed
 
@@ -1529,7 +1697,7 @@ public final class Sistema extends javax.swing.JFrame {
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
         // TODO add your handling code here:
         jTabbedPane1.setSelectedIndex(6);
-        LimpiarTable();
+        LimpiarTabla(TableUsuarios);
         ListarUsuarios();
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
@@ -1568,7 +1736,7 @@ public final class Sistema extends javax.swing.JFrame {
             cl.setDireccion(txtDirecionCliente.getText());
             client.RegistrarCliente(cl);
             JOptionPane.showMessageDialog(null, "Cliente Registrado");
-            LimpiarTable();
+            LimpiarTabla(TableCliente);
             LimpiarCliente();
             ListarCliente();
             btnEditarCliente.setEnabled(false);
@@ -1596,7 +1764,7 @@ public final class Sistema extends javax.swing.JFrame {
             pr.setDireccion(txtDireccionProveedor.getText());
             PrDao.RegistrarProveedor(pr);
             JOptionPane.showMessageDialog(null, "Proveedor Registrado");
-            LimpiarTable();
+            LimpiarTabla(TableProveedor);
             ListarProveedor();
             LimpiarProveedor();
             btnEditarProveedor.setEnabled(false);
@@ -1622,7 +1790,7 @@ public final class Sistema extends javax.swing.JFrame {
             if (pregunta == 0) {
                 int id = Integer.parseInt(txtIdProveedor.getText());
                 PrDao.EliminarProveedor(id);
-                LimpiarTable();
+                LimpiarTabla(TableProveedor);
                 ListarProveedor();
                 LimpiarProveedor();
             }
@@ -1644,7 +1812,7 @@ public final class Sistema extends javax.swing.JFrame {
                 pr.setId(Integer.parseInt(txtIdProveedor.getText()));
                 PrDao.ModificarProveedor(pr);
                 JOptionPane.showMessageDialog(null, "Proveedor Modificado");
-                LimpiarTable();
+                LimpiarTabla(TableProveedor);
                 ListarProveedor();
                 LimpiarProveedor();
                 btnEditarProveedor.setEnabled(false);
@@ -1661,7 +1829,7 @@ public final class Sistema extends javax.swing.JFrame {
             if (pregunta == 0) {
                 int id = Integer.parseInt(txtIdCliente.getText());
                 client.EliminarCliente(id);
-                LimpiarTable();
+                LimpiarTabla(TableCliente);
                 LimpiarCliente();
                 ListarCliente();
             }
@@ -1682,7 +1850,7 @@ public final class Sistema extends javax.swing.JFrame {
                 cl.setId(Integer.parseInt(txtIdCliente.getText()));
                 client.ModificarCliente(cl);
                 JOptionPane.showMessageDialog(null, "Cliente Modificado");
-                LimpiarTable();
+                LimpiarTabla(TableCliente);
                 LimpiarCliente();
                 ListarCliente();
             } else {
@@ -1702,7 +1870,7 @@ public final class Sistema extends javax.swing.JFrame {
             pro.setPrecio(Double.parseDouble(txtPrecioPro.getText()));
             proDao.RegistrarProductos(pro);
             JOptionPane.showMessageDialog(null, "Producto Registrado");
-            LimpiarTable();
+            LimpiarTabla(TableProducto);
             ListarProductos();
             LimpiarProductos();
             cbxProveedorPro.removeAllItems();
@@ -1722,7 +1890,7 @@ public final class Sistema extends javax.swing.JFrame {
             if (pregunta == 0) {
                 int id = Integer.parseInt(txtIdproducto.getText());
                 proDao.EliminarProductos(id);
-                LimpiarTable();
+                LimpiarTabla(TableProducto);
                 LimpiarProductos();
                 ListarProductos();
                 btnEditarpro.setEnabled(false);
@@ -1749,7 +1917,7 @@ public final class Sistema extends javax.swing.JFrame {
                 pro.setId(Integer.parseInt(txtIdproducto.getText()));
                 proDao.ModificarProductos(pro);
                 JOptionPane.showMessageDialog(null, "Producto Modificado");
-                LimpiarTable();
+                LimpiarTabla(TableProducto);
                 ListarProductos();
                 LimpiarProductos();
                 cbxProveedorPro.removeAllItems();
@@ -1785,7 +1953,7 @@ public final class Sistema extends javax.swing.JFrame {
             lg.setRol(rol);
             login.Registrar(lg);
             JOptionPane.showMessageDialog(null, "Usuario Registrado");
-            LimpiarTable();
+            LimpiarTabla(TableUsuarios);
             ListarUsuarios();
             nuevoUsuario();
         }
@@ -1797,7 +1965,7 @@ public final class Sistema extends javax.swing.JFrame {
             if (pregunta == 0) {
                 int id = Integer.parseInt(txtIdusuario.getText());
                 login.eliminarUsuario(id);
-                LimpiarTableUsuario();
+                LimpiarTabla(TableUsuarios);
                 LimpiarUsuarios();
                 ListarUsuarios();
                 btnEliminarUsu.setEnabled(false);
@@ -1836,6 +2004,112 @@ public final class Sistema extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCodigoVentaKeyReleased
 
+    private void v_contadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v_contadoActionPerformed
+        txtDebe.setEnabled(false);
+        LabelDebe.setEnabled(false);
+        txtEntregado.setEnabled(false);
+        LabelPago.setEnabled(false);
+    }//GEN-LAST:event_v_contadoActionPerformed
+
+    private void v_creditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v_creditoActionPerformed
+        txtDebe.setEnabled(true);
+        LabelDebe.setEnabled(true);
+        txtEntregado.setEnabled(true);
+        LabelPago.setEnabled(true);
+    }//GEN-LAST:event_v_creditoActionPerformed
+
+    private void txtEntregadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntregadoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (!"".equals(txtEntregado.getText())) {
+                double pago = Double.parseDouble(txtEntregado.getText());
+                double total = Double.parseDouble(LabelTotal.getText());
+                double debe = total - pago;
+                txtDebe.setText(String.valueOf(debe));
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese el pago");
+                txtEntregado.requestFocus();
+            }
+        }
+    }//GEN-LAST:event_txtEntregadoKeyPressed
+
+    private void txtEntregadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntregadoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEntregadoKeyTyped
+
+    private void txtDebeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDebeKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDebeKeyPressed
+
+    private void txtDebeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDebeKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDebeKeyTyped
+
+    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        if ("".equals(txtIdVenta.getText())) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        } else {
+            double pago = 0.0;
+            int id = Integer.parseInt(txtIdVenta.getText());
+            Vdao.ActualizarVenta(pago, "Cancelado", id);
+            LimpiarTabla(TableVentas);
+            ListarVentas();
+            JOptionPane.showMessageDialog(null, "Venta Modificada");
+
+        }
+    }//GEN-LAST:event_btnPagarActionPerformed
+
+    private void txtBuscarVentaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarVentaKeyReleased
+        buscarVenta(txtBuscarVenta.getText());
+        if ("".equals(txtBuscarVenta.getText())) {
+            LimpiarTabla(TableVentas);
+            ListarVentas();
+        }
+    }//GEN-LAST:event_txtBuscarVentaKeyReleased
+
+    private void txtPagoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPagoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (!"".equals(txtEntregado.getText())) {
+                double pago = Double.parseDouble(txtPago.getText());
+                double total = Double.parseDouble(txtSaldo.getText());
+                double debe = total - pago;
+                txtdebe.setText(String.valueOf(debe));
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese el pago");
+                txtPago.requestFocus();
+            }
+        }
+    }//GEN-LAST:event_txtPagoKeyPressed
+
+    private void txtPagoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPagoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPagoKeyTyped
+
+    private void txtSaldoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSaldoKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSaldoKeyPressed
+
+    private void txtSaldoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSaldoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSaldoKeyTyped
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        if ("".equals(txtIdVenta.getText())) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        } else {
+            double pago = Double.parseDouble(txtPago.getText());
+            String estado = txtEstado.getText();
+            int id = Integer.parseInt(txtIdVenta.getText());
+            Vdao.ActualizarVenta(pago, estado, id);
+            txtPago.setText("");
+            txtSaldo.setText("");
+            txtEstado.setText("");
+            LimpiarTabla(TableVentas);
+            ListarVentas();
+            JOptionPane.showMessageDialog(null, "Venta Modificada");
+
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1846,6 +2120,11 @@ public final class Sistema extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelDebe;
+    private javax.swing.JLabel LabelDebe1;
+    private javax.swing.JLabel LabelDebe2;
+    private javax.swing.JLabel LabelPago;
+    private javax.swing.JLabel LabelPago1;
     private javax.swing.JLabel LabelTotal;
     private javax.swing.JLabel LabelVendedor;
     private javax.swing.JTable TableCliente;
@@ -1855,6 +2134,7 @@ public final class Sistema extends javax.swing.JFrame {
     private javax.swing.JTable TableVenta;
     private javax.swing.JTable TableVentaDetallada;
     private javax.swing.JTable TableVentas;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnActualizarConfig;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnClientes;
@@ -1876,6 +2156,7 @@ public final class Sistema extends javax.swing.JFrame {
     private javax.swing.JButton btnNuevoPro;
     private javax.swing.JButton btnNuevoProveedor;
     private javax.swing.JButton btnNuevoUsu;
+    private javax.swing.JButton btnPagar;
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnUsuarios;
@@ -1917,6 +2198,7 @@ public final class Sistema extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
@@ -1961,10 +2243,12 @@ public final class Sistema extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField txtBuscarVenta;
     private javax.swing.JTextField txtCantPro;
     private javax.swing.JTextField txtCantidadVenta;
     private javax.swing.JTextField txtCodigoPro;
     private javax.swing.JTextField txtCodigoVenta;
+    private javax.swing.JTextField txtDebe;
     private javax.swing.JTextField txtDesPro;
     private javax.swing.JTextField txtDescripcionVenta;
     private javax.swing.JTextField txtDireccionConfig;
@@ -1972,6 +2256,8 @@ public final class Sistema extends javax.swing.JFrame {
     private javax.swing.JTextField txtDirecionCliente;
     private javax.swing.JTextField txtDniCliente;
     private javax.swing.JTextField txtDniVenta;
+    private javax.swing.JTextField txtEntregado;
+    private javax.swing.JTextField txtEstado;
     private javax.swing.JLabel txtFechaVenta;
     private javax.swing.JTextField txtIdCV;
     private javax.swing.JTextField txtIdCliente;
@@ -1987,16 +2273,21 @@ public final class Sistema extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombreClienteventa;
     private javax.swing.JTextField txtNombreConfig;
     private javax.swing.JTextField txtNombreproveedor;
+    private javax.swing.JTextField txtPago;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtPrecioPro;
     private javax.swing.JTextField txtPrecioVenta;
     private javax.swing.JTextField txtRucConfig;
     private javax.swing.JTextField txtRucProveedor;
+    private javax.swing.JTextField txtSaldo;
     private javax.swing.JTextField txtStockDisponible;
     private javax.swing.JTextField txtTelefonoCliente;
     private javax.swing.JTextField txtTelefonoConfig;
     private javax.swing.JTextField txtTelefonoProveedor;
     private javax.swing.JTextField txtUsuario;
+    private javax.swing.JLabel txtdebe;
+    private javax.swing.JRadioButton v_contado;
+    private javax.swing.JRadioButton v_credito;
     // End of variables declaration//GEN-END:variables
 
     private void LimpiarCliente() {
@@ -2005,6 +2296,8 @@ public final class Sistema extends javax.swing.JFrame {
         txtNombreCliente.setText("");
         txtTelefonoCliente.setText("");
         txtDirecionCliente.setText("");
+        txtEntregado.setText("");
+        txtDebe.setText("0.0");
     }
 
     private void LimpiarProveedor() {
@@ -2062,13 +2355,26 @@ public final class Sistema extends javax.swing.JFrame {
 
     private void RegistrarVenta() {
         int cliente = Integer.parseInt(txtIdCV.getText());
+        double debe = Double.parseDouble(txtDebe.getText());
         String vendedor = LabelVendedor.getText();
         double monto = Totalpagar;
         v.setCliente(cliente);
         v.setVendedor(vendedor);
         v.setTotal(monto);
         v.setFecha(fechaActual);
+        v.setDebe(debe);
+        if (v_contado.isSelected() == true) {
+            v.setEstado("Cancelado");
+        }
+        if (v_credito.isSelected() == true) {
+            v.setEstado("Pendiente");
+        }
         Vdao.RegistrarVenta(v);
+    }
+
+    public void buscarVenta(String buscar) {
+        DefaultTableModel modelo = Vdao.Buscar(buscar);
+        TableVentas.setModel(modelo);
     }
 
     private void RegistrarDetalle() {
@@ -2097,48 +2403,9 @@ public final class Sistema extends javax.swing.JFrame {
         }
     }
 
-    public void LimpiarTable() {
-        for (int i = 0; i < modelo.getRowCount(); i++) {
-            modelo.removeRow(i);
-            i = i - 1;
-        }
-    }
-
-    private void LimpiarTableVenta() {
-        tmp = (DefaultTableModel) TableVenta.getModel();
-        int fila = TableVenta.getRowCount();
-        for (int i = 0; i < fila; i++) {
-            tmp.removeRow(0);
-        }
-    }
-
-    private void LimpiarTableCliente() {
-        tmp = (DefaultTableModel) TableCliente.getModel();
-        int fila = TableCliente.getRowCount();
-        for (int i = 0; i < fila; i++) {
-            tmp.removeRow(0);
-        }
-    }
-
-    private void LimpiarTableVentas() {
-        tmp = (DefaultTableModel) TableVentas.getModel();
-        int fila = TableVentas.getRowCount();
-        for (int i = 0; i < fila; i++) {
-            tmp.removeRow(0);
-        }
-    }
-
-    private void LimpiarTableUsuario() {
-        tmp = (DefaultTableModel) TableUsuarios.getModel();
-        int fila = TableUsuarios.getRowCount();
-        for (int i = 0; i < fila; i++) {
-            tmp.removeRow(0);
-        }
-    }
-
-    public void LimpiarTableDetalle() {
-        tmp = (DefaultTableModel) TableVentaDetallada.getModel();
-        int fila = TableVentaDetallada.getRowCount();
+    private void LimpiarTabla(JTable tabla) {
+        tmp = (DefaultTableModel) tabla.getModel();
+        int fila = tabla.getRowCount();
         for (int i = 0; i < fila; i++) {
             tmp.removeRow(0);
         }

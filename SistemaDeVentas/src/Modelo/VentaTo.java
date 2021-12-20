@@ -8,6 +8,24 @@ public class VentaTo {
     private String vendedor;
     private double total;
     private String fecha;
+    private double debe;
+    private String estado;
+
+    public double getDebe() {
+        return debe;
+    }
+
+    public void setDebe(double debe) {
+        this.debe = debe;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
     
     public VentaTo(){
         

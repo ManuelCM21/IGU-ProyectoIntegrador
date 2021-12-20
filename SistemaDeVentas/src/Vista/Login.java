@@ -4,6 +4,7 @@ package Vista;
 import Dao.LoginDao;
 import Modelo.LoginTo;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -14,6 +15,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
+        setTitle("Iniciar Sesión");
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/seguro.png")).getImage());
     }
     
     public void validar() {
@@ -28,7 +31,9 @@ public class Login extends javax.swing.JFrame {
                 sis.setExtendedState(MAXIMIZED_BOTH);
                 dispose();
             }else{
-                JOptionPane.showMessageDialog(null, "Correo o la Contraseña incorrecta");
+                JOptionPane.showMessageDialog(null, "Usuario o la Contraseña incorrecta");
+                txtUsuario.setText("");
+                txtPass.setText("");
             }
         }
     }
