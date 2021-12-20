@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3307
--- Tiempo de generación: 02-12-2021 a las 14:44:22
+-- Tiempo de generación: 20-12-2021 a las 03:24:30
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -44,8 +44,7 @@ INSERT INTO `clientes` (`id`, `dni`, `nombre`, `telefono`, `direccion`) VALUES
 (2, '25004270', 'Efrain Chunca Laura', '984157086', 'Av. Edgar de la Torre'),
 (3, '44708440', 'Reyna Mamani Blanco', '942783463', 'Jr. Vilcabamba'),
 (4, '77298040', 'Frank Grimaldy Chunca', '997448946', 'Urpipata Alta'),
-(5, '78945612', 'Jose Luis', '996583153', 'Av. La Union'),
-(6, '77592648', 'Nilver Salca Aquino', '984153999', 'Jr. Salkantay');
+(5, '78945612', 'Jose Luis Garcia', '996583153', 'Av. La Union');
 
 -- --------------------------------------------------------
 
@@ -83,18 +82,6 @@ CREATE TABLE `detalle` (
   `id_venta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `detalle`
---
-
-INSERT INTO `detalle` (`id`, `id_pro`, `cantidad`, `precio`, `id_venta`) VALUES
-(1, 6, 2, '1895.50', 1),
-(2, 4, 2, '1250.00', 1),
-(5, 4, 1, '1250.00', 3),
-(6, 3, 2, '120.00', 3),
-(7, 2, 2, '155.60', 4),
-(8, 3, 3, '120.00', 4);
-
 -- --------------------------------------------------------
 
 --
@@ -115,12 +102,12 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `codigo`, `nombre`, `proveedor`, `stock`, `precio`) VALUES
-(1, '79878789', 'Laptop lenovo', 1, 11, '3000.00'),
-(2, '14789632', 'Refrigeradora Hive', 1, 190, '155.60'),
-(3, '159632', 'IPhone S35', 1, 23, '120.00'),
-(4, '159874', 'Lenovo Core I5', 2, 118, '1250.00'),
-(5, '159263', 'Celular S10', 1, 116, '145.50'),
-(6, '123456', 'Televisor Samsumg', 1, 152, '1895.50');
+(1, '00001', 'Laptop lenovo core i3', 1, 56, '2350.00'),
+(2, '00002', 'Refrigeradora Hive', 1, 185, '155.60'),
+(3, '00003', 'IPhone S35', 2, 18, '120.00'),
+(4, '00004', 'Lenovo Core I5', 3, 114, '1250.00'),
+(5, '00005', 'Celular S10', 2, 111, '145.50'),
+(6, '00006', 'Televisor Samsumg', 1, 148, '1752.50');
 
 -- --------------------------------------------------------
 
@@ -141,8 +128,9 @@ CREATE TABLE `proveedor` (
 --
 
 INSERT INTO `proveedor` (`id`, `ruc`, `nombre`, `telefono`, `direccion`) VALUES
-(1, '998787', 'Open Services', '798978879', 'Lima - Perú'),
-(2, '485926', 'Pernfesa', '98886523', 'Lima -Perú');
+(1, '207790556210', 'Open Services', '798978879', 'Jr. Los Rosales'),
+(2, '154480546030', 'Photo-Electronics', '988865239', 'Av. Circunvalación'),
+(3, '185542389013', 'Beratronic', '984156085', 'Av. La Unión');
 
 -- --------------------------------------------------------
 
@@ -163,9 +151,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `pass`, `rol`) VALUES
-(1, 'Manuel Chunca', 'chunca', '77298041', 'Administrador'),
-(2, 'Frank Grimaldy', 'frank', '12369', 'Asistente'),
-(3, 'Dan Elioth', 'dancito', '14789632', 'Administrador');
+(1, 'Manuel Chunca Mamani', 'chunca', '77298041', 'Administrador'),
+(2, 'Frank Grimaldy Chunca Mamani', 'frank', '12369', 'Asistente');
 
 -- --------------------------------------------------------
 
@@ -178,17 +165,10 @@ CREATE TABLE `ventas` (
   `cliente` int(11) NOT NULL,
   `vendedor` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `total` decimal(10,2) NOT NULL,
-  `fecha` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+  `fecha` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `debe` decimal(10,2) NOT NULL,
+  `estado` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `ventas`
---
-
-INSERT INTO `ventas` (`id`, `cliente`, `vendedor`, `total`, `fecha`) VALUES
-(1, 3, 'Manuel Chunca', '6291.00', '25/11/2021'),
-(3, 2, 'Manuel Chunca', '1490.00', '26/11/2021'),
-(4, 4, 'Manuel Chunca', '671.20', '26/11/2021');
 
 --
 -- Índices para tablas volcadas
@@ -260,19 +240,19 @@ ALTER TABLE `config`
 -- AUTO_INCREMENT de la tabla `detalle`
 --
 ALTER TABLE `detalle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -284,7 +264,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
