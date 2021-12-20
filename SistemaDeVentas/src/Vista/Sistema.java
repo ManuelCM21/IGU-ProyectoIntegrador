@@ -1090,6 +1090,8 @@ public final class Sistema extends javax.swing.JFrame {
         jLabel51.setText("REPORTE DE VENTAS");
         jLabel51.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel6.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 900, 50));
+
+        txtFechaVenta.setForeground(new java.awt.Color(255, 255, 255));
         jPanel6.add(txtFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, 10));
 
         btnPagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pago.png"))); // NOI18N
