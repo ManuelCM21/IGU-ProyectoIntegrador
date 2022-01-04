@@ -692,14 +692,6 @@ public final class Sistema extends javax.swing.JFrame {
         txtDebe.setEditable(false);
         txtDebe.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         txtDebe.setText("0.0");
-        txtDebe.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtDebeKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDebeKeyTyped(evt);
-            }
-        });
         jPanel2.add(txtDebe, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 150, -1));
 
         jTabbedPane1.addTab("1", jPanel2);
@@ -1061,16 +1053,7 @@ public final class Sistema extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(TableVentas);
         if (TableVentas.getColumnModel().getColumnCount() > 0) {
-            TableVentas.getColumnModel().getColumn(0).setMinWidth(70);
-            TableVentas.getColumnModel().getColumn(0).setMaxWidth(70);
-            TableVentas.getColumnModel().getColumn(3).setMinWidth(140);
-            TableVentas.getColumnModel().getColumn(3).setMaxWidth(140);
-            TableVentas.getColumnModel().getColumn(4).setMinWidth(120);
-            TableVentas.getColumnModel().getColumn(4).setMaxWidth(120);
-            TableVentas.getColumnModel().getColumn(5).setMinWidth(100);
-            TableVentas.getColumnModel().getColumn(5).setMaxWidth(100);
-            TableVentas.getColumnModel().getColumn(6).setMinWidth(110);
-            TableVentas.getColumnModel().getColumn(6).setMaxWidth(110);
+            TableVentas.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 880, 250));
@@ -1167,6 +1150,8 @@ public final class Sistema extends javax.swing.JFrame {
             }
         });
         jPanel6.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 410, 140, 30));
+
+        txtdebe.setForeground(new java.awt.Color(255, 255, 255));
         jPanel6.add(txtdebe, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, -1, -1));
 
         jTabbedPane1.addTab("5", jPanel6);
@@ -1476,7 +1461,6 @@ public final class Sistema extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDescripcionVentaKeyTyped
 
     private void txtCantidadVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadVentaKeyPressed
-        // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             if (!"".equals(txtCantidadVenta.getText())) {
                 int id = Integer.parseInt(txtIdPro.getText());
@@ -1522,12 +1506,10 @@ public final class Sistema extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCantidadVentaKeyPressed
 
     private void txtCantidadVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadVentaKeyTyped
-        // TODO add your handling code here:
         event.numberKeyPress(evt);
     }//GEN-LAST:event_txtCantidadVentaKeyTyped
 
     private void btnEliminarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarventaActionPerformed
-        // TODO add your handling code here:
         modelo = (DefaultTableModel) TableVenta.getModel();
         modelo.removeRow(TableVenta.getSelectedRow());
         TotalPagar();
@@ -1556,7 +1538,6 @@ public final class Sistema extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDniVentaKeyTyped
 
     private void btnGenerarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarVentaActionPerformed
-        // TODO add your handling code here:
         if (TableVenta.getRowCount() > 0) {
             if (!"".equals(txtNombreClienteventa.getText())) {
                 int pregunta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de realizar la venta?");
@@ -1686,6 +1667,9 @@ public final class Sistema extends javax.swing.JFrame {
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
         // TODO add your handling code here:
         jTabbedPane1.setSelectedIndex(4);
+        txtPago.setText("");
+        txtSaldo.setText("");
+        txtEstado.setText("");
         LimpiarTabla(TableVentas);
         ListarVentas();
     }//GEN-LAST:event_btnVentasActionPerformed
@@ -2023,9 +2007,9 @@ public final class Sistema extends javax.swing.JFrame {
     private void txtEntregadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntregadoKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             if (!"".equals(txtEntregado.getText())) {
-                double pago = Double.parseDouble(txtEntregado.getText());
-                double total = Double.parseDouble(LabelTotal.getText());
-                double debe = total - pago;
+                Double pago = Double.parseDouble(txtEntregado.getText());
+                Double total = Double.parseDouble(LabelTotal.getText());
+                Double debe = total - pago;
                 txtDebe.setText(String.valueOf(debe));
             } else {
                 JOptionPane.showMessageDialog(null, "Ingrese el pago");
@@ -2035,16 +2019,8 @@ public final class Sistema extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEntregadoKeyPressed
 
     private void txtEntregadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntregadoKeyTyped
-        // TODO add your handling code here:
+        event.numberDecimalKeyPress(evt, txtEntregado);
     }//GEN-LAST:event_txtEntregadoKeyTyped
-
-    private void txtDebeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDebeKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDebeKeyPressed
-
-    private void txtDebeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDebeKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDebeKeyTyped
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         if ("".equals(txtIdVenta.getText())) {
@@ -2070,11 +2046,11 @@ public final class Sistema extends javax.swing.JFrame {
 
     private void txtPagoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPagoKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (!"".equals(txtEntregado.getText())) {
-                double pago = Double.parseDouble(txtPago.getText());
-                double total = Double.parseDouble(txtSaldo.getText());
-                double debe = total - pago;
-                txtdebe.setText(String.valueOf(debe));
+            if (!"".equals(txtPago.getText())) {
+                Double pago = Double.parseDouble(txtPago.getText());
+                Double total = Double.parseDouble(txtSaldo.getText());
+                Double debe = total - pago;
+                txtSaldo.setText(String.valueOf(debe));
             } else {
                 JOptionPane.showMessageDialog(null, "Ingrese el pago");
                 txtPago.requestFocus();
@@ -2098,10 +2074,16 @@ public final class Sistema extends javax.swing.JFrame {
         if ("".equals(txtIdVenta.getText())) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila");
         } else {
-            double pago = Double.parseDouble(txtPago.getText());
-            String estado = txtEstado.getText();
-            int id = Integer.parseInt(txtIdVenta.getText());
-            Vdao.ActualizarVenta(pago, estado, id);
+            Double debe = Double.parseDouble(txtSaldo.getText());
+            if (txtSaldo.getText().equals("0.0")) {
+                int id = Integer.parseInt(txtIdVenta.getText());
+                String estado = "Cancelado";
+                Vdao.ActualizarVenta(debe, estado, id);
+            } else {
+                int id = Integer.parseInt(txtIdVenta.getText());
+                String estado = "Pendiente";
+                Vdao.ActualizarVenta(debe, estado, id);
+            }
             txtPago.setText("");
             txtSaldo.setText("");
             txtEstado.setText("");

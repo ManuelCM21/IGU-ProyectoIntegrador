@@ -1,4 +1,3 @@
-
 package sistemadeventas;
 
 import Vista.Login;
@@ -9,5 +8,5 @@ public class SistemaDeVentas {
         Login lg = new Login();
         lg.setVisible(true);
     }
-    
+
 }
